@@ -1,6 +1,15 @@
+'
+"', set background=light
+
 " colorscheme aqua
 " colorscheme anokha
-colorscheme evening
+" colorscheme evening
+" colorscheme slate
+colorscheme herokudoc
+
+hi StatusLine                  ctermfg=8     ctermbg=2     cterm=NONE
+hi StatusLineNC                ctermfg=2     ctermbg=8     cterm=NONE
+
 syntax on
 
 set nocompatible " skip vi compatibility
@@ -18,7 +27,7 @@ set visualbell t_vb= " turn off visual bell
 " setup .bashrc or .profile to create these
 set backupdir=~/.vim/backup_files//
 set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
+" set undodir=~/.vim/undo_files// " not available in my vim
 
 set ignorecase
 set tabstop=3
@@ -47,5 +56,32 @@ map #4 zb
 " line numbers on
 map #7 :set number
 " line numbers off
-map #8 :set nonumber
+map #9 :set nonumber
+
+" vundle setup 
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+"
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+"
+" " All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"Plugin 'tmhedberg/SimpylFold'
+
+" enable Ctl+P
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+au BufRead,BufNewFile *.plh setfiletype sql
+au BufRead,BufNewFile *.plb setfiletype sql
 
